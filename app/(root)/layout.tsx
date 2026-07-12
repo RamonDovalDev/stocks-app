@@ -1,0 +1,14 @@
+import Header from "@/components/Header";
+import React, { ReactNode } from "react";
+
+const RootLayout = ({ children }: { children: ReactNode }) => {
+  return (
+    <main className="min-h-screen text-gray-400">
+      <Header />
+
+      <div>{children}</div>
+    </main>
+  );
+};
+
+export default RootLayout;
