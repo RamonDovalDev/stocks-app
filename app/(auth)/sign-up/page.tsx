@@ -1,7 +1,9 @@
 "use client";
 
+import FooterLink from "@/components/form/FooterLink";
 import InputField from "@/components/form/InputField";
 import SelectField from "@/components/form/SelectField";
+import { Button } from "@/components/ui/button";
 import {
   INVESTMENT_GOALS,
   PREFERRED_INDUSTRIES,
@@ -29,12 +31,18 @@ const SignUpPage = () => {
       riskTolerance: "Medium",
       preferredIndustry: "Technology",
     },
+    mode: "onBlur",
   });
+
+  const onSubmit = (data: SignUpFormData) => {
+    console.log(data);
+  };
+
   return (
     <>
       <h1 className="form-title">Sign Up & Personalize</h1>
 
-      <form className="space-y-5">
+      <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
         <InputField
           name="fullName"
           label="Name"
@@ -102,6 +110,20 @@ const SignUpPage = () => {
           control={control}
           error={errors.preferredIndustry}
           required
+        />
+
+        <Button
+          type="submit"
+          disabled={isSubmitting}
+          className="yellow-btn w-full mt-5"
+        >
+          {isSubmitting ? "Create an account" : "Start your investent journey"}
+        </Button>
+
+        <FooterLink
+          text="Already have an account?"
+          linkText="Sign in"
+          href="/sign-in"
         />
       </form>
     </>

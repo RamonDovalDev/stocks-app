@@ -50,6 +50,12 @@ declare global {
     required?: boolean;
     showFlags?: boolean;
   };
+
+  type FooterLinkProps = {
+    text: string;
+    linkText: string;
+    href: string;
+  };
 }
 
 export {};
