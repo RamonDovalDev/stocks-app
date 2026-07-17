@@ -3,7 +3,7 @@ import dns from "node:dns";
 
 dns.setServers(["80.58.61.250", "80.58.61.254"]);
 
-import { connectToDB } from "@/lib/mongodb";
+import { connectToDB } from "@/lib/mongo/mongodb";
 import mongoose from "mongoose";
 
 dotenv.config({
@@ -14,7 +14,7 @@ const main = async () => {
   console.log("Testing connection to MongoDB Atlas...");
   console.log(process.env.MONGODB_URI);
 
-  const { connectToDB } = await import("@/lib/mongodb");
+  const { connectToDB } = await import("@/lib/mongo/mongodb");
 
   await connectToDB();
 
