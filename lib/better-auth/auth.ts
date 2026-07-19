@@ -40,4 +40,4 @@ export const getAuth = async (): Promise<AuthInstance> => {
   return authInstance;
 };
 
-export default getAuth;
+export const auth = await getAuth();
