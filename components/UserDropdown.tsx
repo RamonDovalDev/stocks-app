@@ -15,13 +15,25 @@ import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar";
 import { LogOut } from "lucide-react";
 import NavItems from "./NavItems";
 
-const UserDropdown = () => {
+const UserDropdown = ({ user }: UserDropdownProps) => {
   const router = useRouter();
   const handleSignOut = () => {
     router.push("/sign-in");
   };
 
-  const user = { name: "Ramón Doval", email: "ramon@ramon.com" };
+  if (!user) {
+    return (
+      <div className="flex items-center gap-2">
+        <Button variant="ghost" onClick={() => router.push("/sign-in")}>
+          Sign In
+        </Button>
+
+        <Button variant="ghost" onClick={() => router.push("/sign-up")}>
+          Sign Up
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <DropdownMenu>

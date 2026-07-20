@@ -3,8 +3,10 @@ import Link from "next/link";
 import React from "react";
 import NavItems from "./NavItems";
 import UserDropdown from "./UserDropdown";
+import { auth } from "@/lib/better-auth/auth";
+import { User } from "lucide-react";
 
-const Header = () => {
+const Header = ({ session }: HeaderProps) => {
   return (
     <header className="sticky top-0 header">
       <div className="container header-wrapper">
@@ -22,7 +24,7 @@ const Header = () => {
           <NavItems />
         </nav>
 
-        <UserDropdown />
+        <UserDropdown user={session?.user || null} />
       </div>
     </header>
   );

@@ -62,6 +62,18 @@ declare global {
     name: string;
     intro: string;
   };
+
+  type HeaderProps = {
+    session: Awaited<ReturnType<typeof auth.api.getSession>>;
+  };
+
+  type UserDropdownProps = {
+    user: {
+      name: string;
+      email: string;
+      image?: string | null;
+    } | null;
+  };
 }
 
 export {};
